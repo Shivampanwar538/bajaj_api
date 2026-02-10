@@ -67,7 +67,7 @@ app.post("/bfhl", async (req, res) => {
                 contents: [
                     {
                         parts: [
-                            { text: val }
+                            { text: `Answer in exactly one word only.\n${val}` }
                         ]
                     }
                 ]
