@@ -62,7 +62,7 @@ app.post("/bfhl", async (req, res) => {
         if (typeof val !== "string") throw 0
 
         const r = await axios.post(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
             { contents: [{ parts: [{ text: val }] }] },
             { params: { key: process.env.AI_API_KEY } }
         )
