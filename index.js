@@ -59,14 +59,17 @@ app.post("/bfhl", async (req, res) => {
     }
 
     else if (key === "AI") {
-      if (typeof val !== "string") throw 0
-      const r = await axios.post(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent",
-        { contents: [{ parts: [{ text: val }] }] },
-        { params: { key: process.env.AI_API_KEY } }
-      )
-      out = r.data.candidates[0].content.parts[0].text
-        .trim().split(/\s+/)[0]
+        if (typeof val !== "string") throw 0
+
+        const r = await axios.post(
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
+            { contents: [{ parts: [{ text: val }] }] },
+            { params: { key: process.env.AI_API_KEY } }
+        )
+
+        out = r.data.candidates[0].content.parts[0].text
+            .trim()
+            .split(/\s+/)[0]
     }
 
     else return res.status(400).json({ is_success: false })
